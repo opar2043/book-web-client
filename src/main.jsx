@@ -1,12 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
+
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./Components/Root/Root.jsx";
-import Home from "./Components/Root/Home.jsx";
-import Card from "./Components/Card/Card.jsx";
+import Hero from "./Components/Root/Hero.jsx";
+import Allbooks from "./Components/card/Allbooks.jsx";
+import Blog from "./Components/Blog/Blog.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -15,12 +17,16 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Hero></Hero>
       },
       {
-        path: "/card",
-        element: <Card></Card>
-      }
+        path: "/allbook",
+        element: <Allbooks></Allbooks>
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>
+      },
     ],
   },
 ]);

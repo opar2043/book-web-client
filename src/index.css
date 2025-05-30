@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-color{
+    color: #DC0155;
+}
+.bg-color{
+    background-color: #DC0155;
+}

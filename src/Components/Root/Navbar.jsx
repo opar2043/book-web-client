@@ -1,17 +1,29 @@
 import React from "react";
 import { PiNavigationArrowFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const link = (
     <>
-      <li className="border-r">
-        <a>Add Course</a>
+      <Link to={'/allbook'}>
+               <li className="">
+        <a>All Books</a>
       </li>
-      <li className="border-r">
-        <a>Create Course</a>
+      </Link>
+    <Link to={'/blog'}>
+          <li className="">
+        <a>Blog</a>
+      </li>
+   </Link>
+      <li>
+        <a >
+          register
+        </a>
       </li>
       <li>
-        <button className="btn btn-primary  rounded-full">Log In</button>
+        <a href="">
+          log in
+        </a>
       </li>
     </>
   );
@@ -19,14 +31,16 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100 border-b">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Odemy</a>
+          <a className="btn btn-ghost text-xl">Book Store</a>
         </div>
 
         {/* Window */}
 
         <div className="hidden md:flex">
           <div className=" flex-none   ">
-            <ul className="menu menu-horizontal px-1 gap-2">{link}</ul>
+            <ul className="menu menu-horizontal px-1 gap-2">
+              {link}
+            </ul>
           </div>
         </div>
 
@@ -48,7 +62,9 @@ const Navbar = () => {
               htmlFor="my-drawer"
               aria-label="close sidebar"
               className="drawer-overlay"
-            ></label>
+            >
+
+            </label>
             <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
               {link}
             </ul>

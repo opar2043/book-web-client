@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Whispers of the Forest: A Mindfulness Coloring Book",
+    "author": "Abdejaber Aouadi",
+    "description": "Escape into the serene landscapes of enchanted forests with this relaxing coloring book designed for all ages.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "Single-sided pages to prevent ink leakage",
+      "54 hand-drawn forest illustrations",
+      "Promotes mindfulness and creativity"
+    ],
+    "format": "Paperback",
+    "price": 8.99,
+    "image": "https://via.placeholder.com/150?text=Whispers+of+the+Forest",
+    "category": "Mindfulness"
+  },
+  {
+    "title": "Space Explorers: A Sci-Fi Coloring Adventure",
+    "author": "Abdejaber Aouadi",
+    "description": "Travel through galaxies and planets in this fun sci-fi coloring book for kids, teens, and adults.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "Futuristic spaceship and alien planet designs",
+      "Great for STEM-interested kids",
+      "Single-sided to prevent bleed-through"
+    ],
+    "format": "Paperback",
+    "price": 9.49,
+    "image": "https://via.placeholder.com/150?text=Space+Explorers",
+    "category": "Science Fiction"
+  },
+  {
+    "title": "Floral Mandalas: Relaxing Patterns for All Ages",
+    "author": "Abdejaber Aouadi",
+    "description": "A stress-relief coloring book filled with intricate floral mandalas that inspire calm and focus.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "Intricate floral designs",
+      "Encourages stress relief and relaxation",
+      "Perfect for all coloring skill levels"
+    ],
+    "format": "Paperback",
+    "price": 7.99,
+    "image": "https://via.placeholder.com/150?text=Floral+Mandalas",
+    "category": "Art Therapy"
+  },
+  {
+    "title": "The Animal Kingdom: Fun and Educational Coloring Book",
+    "author": "Abdejaber Aouadi",
+    "description": "Learn and color with animals from around the world in this educational coloring book for kids.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "Animal facts included on each page",
+      "Ideal for kids 5-10 years old",
+      "Teaches geography and biology"
+    ],
+    "format": "Paperback",
+    "price": 6.99,
+    "image": "https://via.placeholder.com/150?text=Animal+Kingdom",
+    "category": "Educational"
+  },
+  {
+    "title": "Zen Doodle Dreams: Abstract Coloring for Relaxation",
+    "author": "Abdejaber Aouadi",
+    "description": "Unwind with abstract doodles and patterns that invite your imagination to explore freely.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "Unique zen-style abstract drawings",
+      "Great for creative thinking",
+      "Suitable for markers or pencils"
+    ],
+    "format": "Paperback",
+    "price": 8.49,
+    "image": "https://via.placeholder.com/150?text=Zen+Doodle+Dreams",
+    "category": "Abstract Art"
+  },
+  {
+    "title": "Underwater Wonders: Ocean-Themed Coloring for Kids",
+    "author": "Abdejaber Aouadi",
+    "description": "Dive into ocean life with whales, dolphins, and coral reefs in this engaging kids' coloring book.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "Ocean animals and underwater scenes",
+      "Fun and educational marine facts",
+      "Helps develop fine motor skills"
+    ],
+    "format": "Paperback",
+    "price": 7.49,
+    "image": "https://via.placeholder.com/150?text=Underwater+Wonders",
+    "category": "Marine Life"
+  },
+  {
+    "title": "Magical Creatures: Fantasy Coloring Fun",
+    "author": "Abdejaber Aouadi",
+    "description": "Unleash your imagination with dragons, unicorns, and fairies in this fantasy-themed coloring book.",
+    "pages": 110,
+    "size": "8.5 x 8.5 inches",
+    "features": [
+      "50+ magical creature designs",
+      "Ideal for fantasy lovers",
+      "Inspires creativity and wonder"
+    ],
+    "format": "Paperback",
+    "price": 8.99,
+    "image": "https://via.placeholder.com/150?text=Magical+Creatures",
+    "category": "Fantasy"
+  }
+]
