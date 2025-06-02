@@ -12,6 +12,7 @@ import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 import AddBooks from "./Components/Dashboard/AddBooks/AddBooks.jsx";
 import Users from "./Components/Dashboard/Users/Users.jsx";
 import AllBook from "./Components/Dashboard/AddBooks/AllBook.jsx";
+import Addblog from "./Components/Blog/Addblog.jsx";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
     {
       path: "/dashboard/allbooks",
       element: <AllBook></AllBook>
+    },
+    {
+      path: "/dashboard/allblog",
+      element: <Addblog></Addblog>
     }
   ]
   }

@@ -26,7 +26,7 @@ const Navbar = () => {
         </a>
       </li>
       <Link to={'/dashboard'}>
-                 <li>
+                 <li className="bg-color hover:bg-pink-600 text-white rounded font-semibold">
         <a href="">
           Dashboard
         </a>
@@ -38,14 +38,14 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100 border-b">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Book Store</a>
+          <a className="btn btn-ghost text-xl text-color font-extrabold">Book Store</a>
         </div>
 
         {/* Window */}
 
         <div className="hidden md:flex">
           <div className=" flex-none   ">
-            <ul className="menu menu-horizontal px-1 gap-2">
+            <ul className="menu menu-horizontal text-color px-1 gap-2">
               {link}
             </ul>
           </div>
