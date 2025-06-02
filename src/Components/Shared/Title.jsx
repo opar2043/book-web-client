@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Title = ({head , head2 , para}) => {
+const Title = ({head , head2 }) => {
   return (
     <div className='flex justify-center flex-col items-center my-5 mt-0 md:mt-10'>
           <div className='flex items-center mb-3'>

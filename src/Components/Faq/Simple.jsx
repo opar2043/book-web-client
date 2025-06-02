@@ -1,9 +1,12 @@
 import React from 'react';
 import { FaBook, FaBookOpen, FaBookReader, FaLaptop } from 'react-icons/fa';
+import Title from '../Shared/Title';
 
 const Simple = () => {
   return (
     <section className="py-12 px-4 md:px-8 lg:px-16">
+        <Title head={'Effective'} head2={'Sides'}></Title>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
         <div className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition duration-300">

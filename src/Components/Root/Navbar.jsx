@@ -25,6 +25,13 @@ const Navbar = () => {
           log in
         </a>
       </li>
+      <Link to={'/dashboard'}>
+                 <li>
+        <a href="">
+          Dashboard
+        </a>
+      </li>
+      </Link>
     </>
   );
   return (
