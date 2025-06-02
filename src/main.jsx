@@ -9,6 +9,9 @@ import Hero from "./Components/Root/Hero.jsx";
 import Allbooks from "./Components/card/Allbooks.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import Dashboard from "./Components/Dashboard/Dashboard.jsx";
+import AddBooks from "./Components/Dashboard/AddBooks/AddBooks.jsx";
+import Users from "./Components/Dashboard/Users/Users.jsx";
+import AllBook from "./Components/Dashboard/AddBooks/AllBook.jsx";
 
 
 const router = createBrowserRouter([
@@ -32,7 +35,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>
+    element: <Dashboard></Dashboard>,
+    children: [
+    {
+      path: "/dashboard/addbooks",
+      element: <AddBooks></AddBooks>
+    },
+    {
+      path: "/dashboard/users",
+      element: <Users></Users>
+    },
+    {
+      path: "/dashboard/allbooks",
+      element: <AllBook></AllBook>
+    }
+  ]
   }
 ]);
 
