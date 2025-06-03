@@ -1,36 +1,60 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PiNavigationArrowFill } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Firebase/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, handleLogout } = useContext(AuthContext);
+  const navigate = useNavigate();
+  function logOut() {
+    handleLogout()
+      .then(() => {
+        Swal.fire({
+          title: "Log Out Successfully!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  }
+
   const link = (
     <>
-      <Link to={'/allbook'}>
-               <li className="">
-        <a>All Books</a>
-      </li>
+      <Link to={"/allbook"}>
+        <li className="">
+          <a>All Books</a>
+        </li>
       </Link>
-    <Link to={'/blog'}>
-          <li className="">
-        <a>Blog</a>
-      </li>
-   </Link>
-      <li>
-        <a >
-          register
-        </a>
-      </li>
-      <li>
-        <a href="">
-          log in
-        </a>
-      </li>
-      <Link to={'/dashboard'}>
-                 <li className="bg-color hover:bg-pink-600 text-white rounded font-semibold">
-        <a href="">
-          Dashboard
-        </a>
-      </li>
+      <Link to={"/blog"}>
+        <li className="">
+          <a>Blog</a>
+        </li>
+      </Link>
+      {!user ? (
+        <Link to="/register">
+          <li>
+            <a>register</a>
+          </li>
+        </Link>
+      ) : (
+        <button
+          onClick={() => logOut()}
+          className="hover:bg-color hover:text-white rounded"
+        >
+          <li>
+            <a href="">Log Out</a>
+          </li>
+        </button>
+      )}
+
+      <Link to={"/dashboard"}>
+        <li className="bg-color hover:bg-pink-600 text-white rounded font-semibold">
+          <a href="">Dashboard</a>
+        </li>
       </Link>
     </>
   );
@@ -38,7 +62,9 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100 border-b">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl text-color font-extrabold">Book Store</a>
+          <a className="btn btn-ghost text-xl text-color font-extrabold">
+            Book Store
+          </a>
         </div>
 
         {/* Window */}
@@ -69,9 +95,7 @@ const Navbar = () => {
               htmlFor="my-drawer"
               aria-label="close sidebar"
               className="drawer-overlay"
-            >
-
-            </label>
+            ></label>
             <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
               {link}
             </ul>

@@ -7,7 +7,7 @@ import {BsInstagram, BsLinkedin, BsTwitter} from "react-icons/bs";
 
 const Footer = () => {
     return (
-        <footer className="bg-color boxShadow rounded-xl w-full p-6 md:p-9">
+        <footer className="bg-color boxShadow  w-full p-6 md:p-9">
             <div className="flex justify-center gap-[30px] flex-wrap w-full sm:px-32">
                 <div
                     className="flex justify-center sm:justify-between gap-[30px] w-full flex-wrap">

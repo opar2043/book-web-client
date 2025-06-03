@@ -13,6 +13,10 @@ import AddBooks from "./Components/Dashboard/AddBooks/AddBooks.jsx";
 import Users from "./Components/Dashboard/Users/Users.jsx";
 import AllBook from "./Components/Dashboard/AddBooks/AllBook.jsx";
 import Addblog from "./Components/Blog/Addblog.jsx";
+import ViewCard from "./Components/card/ViewCard.jsx";
+import AuthProvider from "./Components/Firebase/AuthProvider.jsx";
+import Login from "./Components/Firebase/Login.jsx";
+import Register from "./Components/Firebase/Register.jsx";
 
 
 const router = createBrowserRouter([
@@ -31,6 +35,18 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/viewcard/:id",
+        element: <ViewCard></ViewCard>
       },
     ],
   },
@@ -60,6 +76,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </StrictMode>
 );

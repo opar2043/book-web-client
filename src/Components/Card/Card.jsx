@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 
 const Card = ({book}) => {
     const {title , price , image , author , category} = book;
     return (
-        <div className="relative rounded-lg overflow-hidden hover:shadow-2xl p-2">
+ <Link to='/viewcard/1'>
+         <div className="relative rounded-lg overflow-hidden hover:shadow-2xl p-2">
 
             {/* badge */}
             <span
@@ -20,6 +22,7 @@ const Card = ({book}) => {
                 <p className="text-[1.1rem] font-semibold mt-1 text-color">${price}</p>
             </div>
         </div>
+ </Link>
     );
 };
 
