@@ -3,20 +3,25 @@ import Card from "./Card";
 import { CiSearch } from "react-icons/ci";
 import { FaArrowAltCircleLeft, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import useAxios from "../Hooks/useAxios";
+import useBooks from "../Hooks/useBooks";
 
 const Allbooks = () => {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState("");
   const [dbSearch, setDbSearch] = useState("");
 
+
   // Fetch books from local JSON
   useEffect(() => {
-    fetch("/book.json")
+    fetch('https://book-web-seconed.vercel.app/books')
+    // fetch('books.json')
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
       });
   }, []);
+
 
   // Debounce search input
   useEffect(() => {
@@ -28,7 +33,7 @@ const Allbooks = () => {
   }, [search]);
 
   // Filter books based on title, author, or category
-  const filterBook = books.filter(
+  const filterBook = books && books.filter(
     (book) =>
       dbSearch === "" ||
       book.title?.toLowerCase().includes(dbSearch) ||

@@ -3,12 +3,13 @@ import { FaHome } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 
 const ViewCard = () => {
-  const { id } = useParams(); // assuming dynamic routing
+  const { id } = useParams(); 
+  console.log(id);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/book.json")
+    fetch("https://book-web-seconed.vercel.app/books")
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
@@ -30,7 +31,7 @@ const ViewCard = () => {
     category,
     size,
     format,
-    image,
+    image
   } = view || {};
 
   return (
@@ -53,7 +54,8 @@ const ViewCard = () => {
             <li><strong>Category:</strong> {category}</li>
             <li><strong>Size:</strong> {size}</li>
             <li><strong>Format:</strong> {format}</li>
-            <li><strong>Features:</strong> {features?.join(", ")}</li>
+         
+            <li><strong>Features:</strong> {features }</li>
           </ul>
 
           <div className="flex justify-between items-center">
@@ -75,3 +77,6 @@ const ViewCard = () => {
 };
 
 export default ViewCard;
+
+
+//    {/* <li><strong>Features:</strong> {features?.join(", ") || ''}</li> */}

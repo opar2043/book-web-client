@@ -8,7 +8,7 @@ const AllBook = () => {
   const axiosSecure = useAxios();
 
   useEffect(() => {
-    fetch("/book.json")
+    fetch("https://book-web-seconed.vercel.app/books")
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);

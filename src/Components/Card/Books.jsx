@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Books = () => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
-    fetch("/book.json")
+    fetch("https://book-web-seconed.vercel.app/books")
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
