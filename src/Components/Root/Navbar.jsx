@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PiNavigationArrowFill } from "react-icons/pi";
+import { IoIosMenu } from "react-icons/io";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Firebase/AuthProvider";
 import Swal from "sweetalert2";
@@ -62,9 +62,9 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100 border-b">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl text-color font-extrabold">
+          <p className="text-lg md:text-xl text-color font-extrabold">
             Book Store
-          </a>
+          </p>
         </div>
 
         {/* Window */}
@@ -85,9 +85,9 @@ const Navbar = () => {
             {/* Page content here */}
             <label
               htmlFor="my-drawer"
-              className="btn text-purple-600 drawer-button"
+              className="btn text-color drawer-button"
             >
-              <PiNavigationArrowFill />
+              <IoIosMenu  size={35} />
             </label>
           </div>
           <div className="drawer-side">

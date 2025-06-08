@@ -32,7 +32,6 @@ const Addblog = () => {
         toast.error("Something Happen Wrong");
       });
 
-    console.log(newBlog); // You can replace this with an API call
     setTitle("");
     setBlog("");
   };

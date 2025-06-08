@@ -37,7 +37,7 @@ const Allbooks = () => {
   );
 
   return (
-    <div className=" my-5 md:my-10 mx-auto w-11/12">
+    <div className="my-5 md:my-10 mx-auto md:w-11/12 w-full">
       {/* Search Bar */}
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="flex-1 flex items-center gap-2">

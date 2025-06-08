@@ -10,13 +10,13 @@ import Allbooks from "./Components/card/Allbooks.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 import AddBooks from "./Components/Dashboard/AddBooks/AddBooks.jsx";
-import Users from "./Components/Dashboard/Users/Users.jsx";
 import AllBook from "./Components/Dashboard/AddBooks/AllBook.jsx";
 import Addblog from "./Components/Blog/Addblog.jsx";
 import ViewCard from "./Components/card/ViewCard.jsx";
 import AuthProvider from "./Components/Firebase/AuthProvider.jsx";
 import Login from "./Components/Firebase/Login.jsx";
 import Register from "./Components/Firebase/Register.jsx";
+import BlogsDash from "./Components/Dashboard/blogsDash/BlogsDash.jsx";
 
 
 const router = createBrowserRouter([
@@ -59,8 +59,8 @@ const router = createBrowserRouter([
       element: <AddBooks></AddBooks>
     },
     {
-      path: "/dashboard/users",
-      element: <Users></Users>
+      path: "/dashboard/allblogs",
+      element: <BlogsDash></BlogsDash>
     },
     {
       path: "/dashboard/allbooks",

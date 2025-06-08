@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxios from "../../Hooks/useAxios";
 
 const AllBook = () => {
   const [books, setBooks] = useState([]);
+  const axiosSecure = useAxios();
 
   useEffect(() => {
     fetch("/book.json")
@@ -11,6 +14,40 @@ const AllBook = () => {
         setBooks(data);
       });
   }, []);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure
+          .delete(`/books/${id}`)
+          .then((res) => {
+            if (res.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: "Error!",
+              text: "Something went wrong.",
+              icon: "error",
+            });
+            console.error(err);
+          });
+      }
+    });
+  };
 
   return (
     <div className="p-6 min-h-screen bg-gray-100">
@@ -27,30 +64,32 @@ const AllBook = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {books && books.map((book, idx) => (
-              <tr key={idx} className="hover:bg-blue-50 transition">
-                <td className="px-4 py-3 text-sm text-gray-600">{idx + 1}</td>
-                <td className="px-4 py-3 text-sm font-medium text-gray-800">{book.title}</td>
-                <td className="px-4 py-3 text-sm text-gray-700">{book.author}</td>
-                <td className="px-4 py-3 text-center">
-                  <div className="flex justify-center gap-4">
-                    <button
-                      title="Edit"
-                      className="text-blue-600 hover:text-blue-800 transition"
-                    >
-                      <FaEdit />
-                    </button>
-                    <button
-                      title="Delete"
-                      className="text-red-600 hover:text-red-800 transition"
-                    >
-                      <FaTrash />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-            {books.length === 0 && (
+            {books.length > 0 ? (
+              books.map((book, idx) => (
+                <tr key={book._id} className="hover:bg-blue-50 transition">
+                  <td className="px-4 py-3 text-sm text-gray-600">{idx + 1}</td>
+                  <td className="px-4 py-3 text-sm font-medium text-gray-800">{book.title}</td>
+                  <td className="px-4 py-3 text-sm text-gray-700">{book.author}</td>
+                  <td className="px-4 py-3 text-center">
+                    <div className="flex justify-center gap-4">
+                      <button
+                        title="Edit"
+                        className="text-blue-600 hover:text-blue-800 transition"
+                      >
+                        <FaEdit />
+                      </button>
+                      <button
+                        title="Delete"
+                        className="text-red-600 hover:text-red-800 transition"
+                        onClick={() => handleDelete(book._id)}
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            ) : (
               <tr>
                 <td colSpan="4" className="text-center py-4 text-gray-500">
                   No books available.

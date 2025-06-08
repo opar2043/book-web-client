@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { MdAddBox, MdLibraryBooks, MdPeople } from "react-icons/md";
-import { FaBloggerB } from "react-icons/fa";
+import { FaBlog, FaBloggerB } from "react-icons/fa";
 import { AiOutlineHome } from "react-icons/ai";
 
 const Dashboard = () => {
@@ -37,10 +37,10 @@ const Dashboard = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/users"
+              to="/dashboard/allblogs"
               className="flex items-center gap-2 hover:bg-pink-600 rounded px-3 py-2"
             >
-              <MdPeople size={20} /> Users
+              <FaBlog size={20} /> All Blogs
             </Link>
           </li>
           <li>

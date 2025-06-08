@@ -25,11 +25,11 @@ const posts = [
 
 const Blog = () => {
   return (
-    <section className="max-w-5xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold mb-6 text-center text-pink-500">🖍️ Blog & Book Highlights</h2>
-      <div className="space-y-8">
+    <section className="w-full md:w-11/12 mx-auto px-4 py-10">
+      <h2 className="text-xl md:text-3xl font-bold mb-6 text-center text-pink-500">🖍️ Blog & Book Highlights</h2>
+      <div className="space-y-8 grid grid-cols-1 md:grid-cols-2 gap-3 ">
         {posts.map((post, index) => (
-          <div key={index} className="p-6 rounded-2xl shadow-md bg-white hover:shadow-lg transition">
+          <div key={index} className="p-6 rounded-2xl shadow-lg bg-white hover:shadow-lg transition">
             <h3 className="text-xl font-semibold text-blue-600 mb-2">{post.title}</h3>
             <p className="text-gray-700 mb-2">{post.description}</p>
             <p className="text-sm text-gray-400">{post.date}</p>
