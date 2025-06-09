@@ -29,7 +29,7 @@ const Addblog = () => {
       })
       .then((err) => {
         console.log(err);
-        toast.error("Something Happen Wrong");
+        Swal.error("SweetAlert2 is working!");
       });
 
     setTitle("");
