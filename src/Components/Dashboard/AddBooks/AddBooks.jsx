@@ -1,6 +1,5 @@
 import Swal from "sweetalert2";
 import useAxios from "../../Hooks/useAxios";
-import toast from "react-hot-toast";
 
 const img_api_key =
   "https://api.imgbb.com/1/upload?key=188918a9c4dee4bd0453f7ec15042a27";

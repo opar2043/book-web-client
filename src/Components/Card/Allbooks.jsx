@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card";
 import { CiSearch } from "react-icons/ci";
-import { FaArrowAltCircleLeft, FaArrowRight } from "react-icons/fa";
+import {  FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useAxios from "../Hooks/useAxios";
-import useBooks from "../Hooks/useBooks";
 
 const Allbooks = () => {
   const [books, setBooks] = useState([]);
@@ -12,10 +10,8 @@ const Allbooks = () => {
   const [dbSearch, setDbSearch] = useState("");
 
 
-  // Fetch books from local JSON
   useEffect(() => {
     fetch('https://book-web-seconed.vercel.app/books')
-    // fetch('books.json')
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
@@ -32,7 +28,6 @@ const Allbooks = () => {
     return () => clearTimeout(timer);
   }, [search]);
 
-  // Filter books based on title, author, or category
   const filterBook = books && books.filter(
     (book) =>
       dbSearch === "" ||

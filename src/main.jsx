@@ -17,12 +17,14 @@ import AuthProvider from "./Components/Firebase/AuthProvider.jsx";
 import Login from "./Components/Firebase/Login.jsx";
 import Register from "./Components/Firebase/Register.jsx";
 import BlogsDash from "./Components/Dashboard/blogsDash/BlogsDash.jsx";
+import Error from "./Components/Shared/Error.jsx";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",

@@ -6,14 +6,13 @@ const ViewCard = () => {
   const { id } = useParams(); 
   console.log(id);
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://book-web-seconed.vercel.app/books")
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
-        setLoading(false);
+        
       });
   }, []);
 
