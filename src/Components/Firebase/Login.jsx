@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { FaEye, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { FiMail, FiLock, FiEye, FiEyeOff, FiBook } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -8,12 +9,7 @@ import useAxios from "../Hooks/useAxios";
 
 const Login = () => {
   const { handleLogin, user, setUser, googleSignin } = useContext(AuthContext);
-  const [value , setValue] = useState(false);
-  function handleToggle(){
-    setValue(!value)
-    console.log(value);
-  }
-
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const axiosSecure = useAxios();
 
@@ -27,7 +23,6 @@ const Login = () => {
       .then((userCredential) => {
         const myUser = userCredential.user;
         setUser(myUser);
-        console.log(user);
         Swal.fire({
           title: "Logged In!",
           icon: "success",
@@ -37,7 +32,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        toast.error("something happem wrong");
+        toast.error("Something went wrong. Please try again.");
       });
   }
 
@@ -48,7 +43,7 @@ const Login = () => {
         setUser(userCredential.user);
         axiosSecure.post("/users", userCredential.user).then((res) => {
           Swal.fire({
-            title: "Registered Successfully!",
+            title: "Logged In Successfully!",
             icon: "success",
             draggable: true,
           });
@@ -56,126 +51,212 @@ const Login = () => {
         });
       })
       .catch((error) => {
-        console.error("Error signing up:", error.message);
+        console.error("Error signing in:", error.message);
+        toast.error("Google sign-in failed. Please try again.");
       });
   }
 
   return (
-    <div>
-      <div className="mx-auto max-w-screen-xl bg-base-200 px-4 py-16 sm:px-6 lg:px-8 mt-7 rounded-md">
-        <div className="mx-auto max-w-lg text-center ">
-          <h1 className="text-2xl font-bold sm:text-3xl">
-            Started Shopping today!
-          </h1>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-pink-50 flex items-center justify-center px-4 py-8 sm:py-12">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        
+        {/* Left Side - Branding */}
+        <div className="hidden lg:block">
+          <div className="relative">
+            {/* Decorative Elements */}
+            <div className="absolute top-0 left-0 w-72 h-72 bg-[#DC0155]/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-[#DC0155] rounded-2xl mb-6 shadow-xl">
+                <FiBook className="w-10 h-10 text-white" />
+              </div>
+              
+              <h1 className="text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
+                Welcome Back!
+              </h1>
+              
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Sign in to continue your reading journey and explore our vast collection of books.
+              </p>
 
-          <p className="mt-4 text-gray-500">Connect to Us</p>
+              {/* Features List */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">🎯</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Personalized</h3>
+                    <p className="text-sm text-gray-600">Recommendations just for you</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">📖</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Track Progress</h3>
+                    <p className="text-sm text-gray-600">Save your reading history</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">⭐</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Exclusive Access</h3>
+                    <p className="text-sm text-gray-600">Members-only deals and offers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <form
-          onSubmit={handleSignIn}
-          action="#"
-          className="mx-auto shadow p-3 rounded-md  mt-8 mb-0 max-w-md space-y-4  "
-        >
-          <div>
-            <label htmlFor="email" className="sr-only">
-              Email
-            </label>
-
-            <div className="relative">
-              <input
-                type="email"
-                className="w-full rounded-lg border border-gray-400 p-4 pe-12 text-sm shadow-xs"
-                placeholder="Enter email"
-                name="email"
-                defaultValue={'jasim12@gmail.com'}
-              />
-
-              <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-4 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    onClick={handleToggle}
-                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                  />
-                </svg>
-              </span>
+        {/* Right Side - Login Form */}
+        <div className="w-full">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10">
+            {/* Mobile Logo */}
+            <div className="lg:hidden flex justify-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#DC0155] rounded-xl shadow-lg">
+                <FiBook className="w-8 h-8 text-white" />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label htmlFor="password" className="sr-only">
-              Password
-            </label>
-
-            <div className="relative">
-              <input
-                type="password"
-                className="w-full rounded-lg border border-gray-400 p-4 pe-12 text-sm shadow-xs"
-                placeholder="Enter password"
-                name="pass"
-                defaultValue={'1234567'}
-              />
-
-              <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-4 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-            <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    onClick={handleToggle}
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-
-                </svg>
-              </span>
+            {/* Form Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                Sign In
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600">
+                Start shopping for your favorite books today!
+              </p>
             </div>
-          </div>
 
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-500">
-              No account?
-              <Link to={"/register"} className="text-color font-bold">
-                {" "}
-                Sign up
+            <form onSubmit={handleSignIn} className="space-y-5">
+              {/* Email Field */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FiMail className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    defaultValue="jasim12@gmail.com"
+                    placeholder="Enter your email"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm sm:text-base"
+                  />
+                </div>
+              </div>
+
+              {/* Password Field */}
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FiLock className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="pass"
+                    defaultValue="1234567"
+                    placeholder="Enter your password"
+                    className="w-full pl-12 pr-12 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm sm:text-base"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600"
+                  >
+                    {showPassword ? (
+                      <FiEyeOff className="w-5 h-5" />
+                    ) : (
+                      <FiEye className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Forgot Password */}
+              <div className="flex items-center justify-between text-sm">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 text-[#DC0155] border-gray-300 rounded focus:ring-[#DC0155]"
+                  />
+                  <span className="text-gray-600">Remember me</span>
+                </label>
+                <a href="#" className="text-[#DC0155] hover:underline font-medium">
+                  Forgot Password?
+                </a>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-[#DC0155] hover:bg-[#B8004A] text-white py-3.5 rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Sign In
+              </button>
+
+              {/* Divider */}
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-4 bg-white text-gray-500">Or continue with</span>
+                </div>
+              </div>
+
+              {/* Google Sign In */}
+              <button
+                type="button"
+                onClick={handleGoogle}
+                className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 hover:border-[#DC0155] text-gray-700 py-3.5 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-50 transition-all duration-200"
+              >
+                <FaGoogle className="w-5 h-5 text-red-500" />
+                Sign in with Google
+              </button>
+
+              {/* Sign Up Link */}
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-4 bg-white text-gray-500">Don't have an account?</span>
+                </div>
+              </div>
+
+              <Link to="/register">
+                <button
+                  type="button"
+                  className="w-full border-2 border-[#DC0155] text-[#DC0155] py-3.5 rounded-lg font-semibold text-sm sm:text-base hover:bg-pink-50 transition-all duration-200"
+                >
+                  Create New Account
+                </button>
               </Link>
-            </p>
+            </form>
+          </div>
 
-            <button
-              type="submit"
-              className="btn-wide rounded-lg bg-color px-6 py-3 text-sm font-medium text-white"
-            >
-              Sign in
-            </button>
-          </div>
-          <div className="mx-auto">
-            <button
-              onClick={() => handleGoogle()}
-              className="text-center btn btn-outline text-color w-full border border-gray-400"
-            >
-              <FaGoogle></FaGoogle>Google
-            </button>
-          </div>
-        </form>
+          {/* Terms & Privacy */}
+          <p className="text-center text-xs sm:text-sm text-gray-500 mt-6">
+            By signing in, you agree to our{" "}
+            <a href="#" className="text-[#DC0155] hover:underline">Terms of Service</a>
+            {" "}and{" "}
+            <a href="#" className="text-[#DC0155] hover:underline">Privacy Policy</a>
+          </p>
+        </div>
       </div>
     </div>
   );

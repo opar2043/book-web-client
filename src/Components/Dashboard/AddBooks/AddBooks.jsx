@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxios from "../../Hooks/useAxios";
+import { FiBook, FiUser, FiFileText, FiDollarSign, FiTag, FiImage } from "react-icons/fi";
 
 const img_api_key =
   "https://api.imgbb.com/1/upload?key=188918a9c4dee4bd0453f7ec15042a27";
@@ -69,61 +70,75 @@ const AddBooks = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center py-10 px-4">
+    <div className="w-full">
+      <div className="mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+          Add New Book
+        </h2>
+        <p className="text-sm sm:text-base text-gray-600">
+          Fill in the details to add a new book to your library
+        </p>
+      </div>
+
       <form
         onSubmit={handleaddBook}
-        className="w-full max-w-3xl bg-white p-8 rounded-2xl shadow-xl space-y-6"
+        className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 sm:p-8 space-y-6"
       >
-        <h2 className="text-3xl font-bold text-center text-blue-700 mb-4">
-          📚 Add a New Book to Library
-        </h2>
-
         {/* Title & Author */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
-              Book Title
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="flex items-center gap-2">
+                <FiBook className="w-4 h-4 text-[#DC0155]" />
+                Book Title
+              </div>
             </label>
             <input
               type="text"
               name="title"
               required
-              placeholder="e.g. Underwater Wonders"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Enter book title"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
-              Author
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="flex items-center gap-2">
+                <FiUser className="w-4 h-4 text-[#DC0155]" />
+                Author
+              </div>
             </label>
             <input
               type="text"
               name="author"
               required
-              placeholder="e.g. Abdejaber Aouadi"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Enter author name"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
-            Description
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="flex items-center gap-2">
+              <FiFileText className="w-4 h-4 text-[#DC0155]" />
+              Description
+            </div>
           </label>
           <textarea
             name="description"
             rows="3"
             required
-            placeholder="Brief overview of the book..."
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            placeholder="Brief overview of the book"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm resize-none"
           ></textarea>
         </div>
 
         {/* Pages, Size, Format */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Pages
             </label>
             <input
@@ -131,11 +146,11 @@ const AddBooks = () => {
               name="pages"
               required
               placeholder="e.g. 110"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Size
             </label>
             <input
@@ -143,11 +158,11 @@ const AddBooks = () => {
               name="size"
               required
               placeholder="e.g. 8.5 x 8.5 inches"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Format
             </label>
             <input
@@ -155,30 +170,33 @@ const AddBooks = () => {
               name="format"
               required
               placeholder="e.g. Paperback"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
         </div>
 
         {/* Features */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Features
           </label>
           <textarea
             name="features"
             rows="2"
             required
-            placeholder="e.g. Ocean animals, Educational facts..."
-            className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            placeholder="e.g. Ocean animals, Educational facts"
+            className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm resize-none"
           ></textarea>
         </div>
 
-        {/* Price, Category, Image URL */}
+        {/* Price, Category, Image */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
-              Price($)
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="flex items-center gap-2">
+                <FiDollarSign className="w-4 h-4 text-[#DC0155]" />
+                Price ($)
+              </div>
             </label>
             <input
               type="number"
@@ -186,42 +204,48 @@ const AddBooks = () => {
               step="0.01"
               required
               placeholder="e.g. 7.49"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
-              Category
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="flex items-center gap-2">
+                <FiTag className="w-4 h-4 text-[#DC0155]" />
+                Category
+              </div>
             </label>
             <input
               type="text"
               required
               name="category"
               placeholder="e.g. Marine Life"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700">
-              Image URL
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="flex items-center gap-2">
+                <FiImage className="w-4 h-4 text-[#DC0155]" />
+                Book Image
+              </div>
             </label>
             <input
               type="file"
               name="image"
               required
-              placeholder="https://via.placeholder.com/150"
-              className="w-full mt-1 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              accept="image/*"
+              className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-[#DC0155] hover:file:bg-pink-100"
             />
           </div>
         </div>
 
         {/* Submit Button */}
-        <div>
+        <div className="pt-4">
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg shadow hover:bg-blue-700 transition"
+            className="w-full bg-[#DC0155] hover:bg-[#B8004A] text-white font-semibold py-3.5 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base"
           >
-            📥 Save Book
+            Add Book to Library
           </button>
         </div>
       </form>

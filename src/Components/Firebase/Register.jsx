@@ -1,10 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import Swal from "sweetalert2";
-
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import useAxios from "../Hooks/useAxios";
+import { FiUser, FiMail, FiLock, FiImage, FiBook } from "react-icons/fi";
 
 const Register = () => {
   const { setUser, handleRegister, updateData } = useContext(AuthContext);
@@ -64,87 +63,195 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <div className="mx-auto max-w-screen-xl  px-4 py-16 sm:px-6 lg:px-8 mt-8 rounded-md">
-        <div className="mx-auto max-w-lg">
-          <form
-            onSubmit={handleSignUp}
-            className="mt-6 mb-0 space-y-4 bg-white rounded-lg p-4 shadow-xl sm:p-6 lg:p-8"
-            onSubmit={handleSignUp}
-          >
-            <p className="text-center text-lg md:text-xl font-medium text-color">
-              Create your account
-            </p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-pink-50 flex items-center justify-center px-4 py-8 sm:py-12">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        
+        {/* Left Side - Branding */}
+        <div className="hidden lg:block">
+          <div className="relative">
+            {/* Decorative Elements */}
+            <div className="absolute top-0 left-0 w-72 h-72 bg-[#DC0155]/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-200/30 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-[#DC0155] rounded-2xl mb-6 shadow-xl">
+                <FiBook className="w-10 h-10 text-white" />
+              </div>
+              
+              <h1 className="text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
+                Join Our Book Store
+              </h1>
+              
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Create your account and discover thousands of amazing books. Start your reading journey today!
+              </p>
 
-            {/* Name Field */}
-            <div>
-              <label htmlFor="name" className="sr-only">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-xs"
-              />
+              {/* Features List */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">📚</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Vast Collection</h3>
+                    <p className="text-sm text-gray-600">Access thousands of books</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">💰</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Great Deals</h3>
+                    <p className="text-sm text-gray-600">Exclusive discounts for members</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white rounded-lg shadow-md flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">🚚</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Fast Delivery</h3>
+                    <p className="text-sm text-gray-600">Quick shipping worldwide</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side - Registration Form */}
+        <div className="w-full">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10">
+            {/* Mobile Logo */}
+            <div className="lg:hidden flex justify-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#DC0155] rounded-xl shadow-lg">
+                <FiBook className="w-8 h-8 text-white" />
+              </div>
             </div>
 
-            {/* Email Field */}
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-xs"
-              />
+            {/* Form Header */}
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                Create Account
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600">
+                Fill in your details to get started
+              </p>
             </div>
 
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                type="password"
-                name="pass"
-                placeholder="Enter password"
-                className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-xs"
-              />
-            </div>
+            <form onSubmit={handleSignUp} className="space-y-5">
+              {/* Name Field */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FiUser className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your full name"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm sm:text-base"
+                  />
+                </div>
+              </div>
 
-            {/* Photo Field */}
-            <div>
-              <label htmlFor="photo" className="sr-only">
-                Photo
-              </label>
-              <input
-                type="url"
-                name="photo"
-                placeholder="Enter your Photo URL"
-                className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-xs"
-              />
-            </div>
+              {/* Email Field */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FiMail className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm sm:text-base"
+                  />
+                </div>
+              </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="block w-full rounded-lg bg-color px-5 py-3 text-sm font-medium text-white"
-            >
-              Sign Up
-            </button>
+              {/* Password Field */}
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FiLock className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type="password"
+                    name="pass"
+                    placeholder="Create a strong password"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm sm:text-base"
+                  />
+                </div>
+              </div>
 
-            {/* Redirect to Login */}
-            <p className="text-center text-sm text-gray-500">
-              Already have an account?
-              <Link to={"/login"} className="underline text-color font-bold">
-                {" "}
-                Sign In
+              {/* Photo URL Field */}
+              <div>
+                <label htmlFor="photo" className="block text-sm font-medium text-gray-700 mb-2">
+                  Profile Photo URL
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FiImage className="text-gray-400 w-5 h-5" />
+                  </div>
+                  <input
+                    type="url"
+                    name="photo"
+                    placeholder="https://example.com/photo.jpg"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DC0155] focus:border-transparent transition-all text-sm sm:text-base"
+                  />
+                </div>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-[#DC0155] hover:bg-[#B8004A] text-white py-3.5 rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Create Account
+              </button>
+
+              {/* Divider */}
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-4 bg-white text-gray-500">Already have an account?</span>
+                </div>
+              </div>
+
+              {/* Sign In Link */}
+              <Link to="/login">
+                <button
+                  type="button"
+                  className="w-full border-2 border-[#DC0155] text-[#DC0155] py-3.5 rounded-lg font-semibold text-sm sm:text-base hover:bg-pink-50 transition-all duration-200"
+                >
+                  Sign In Instead
+                </button>
               </Link>
-            </p>
-          </form>
+            </form>
+          </div>
+
+          {/* Terms & Privacy */}
+          <p className="text-center text-xs sm:text-sm text-gray-500 mt-6">
+            By creating an account, you agree to our{" "}
+            <a href="#" className="text-[#DC0155] hover:underline">Terms of Service</a>
+            {" "}and{" "}
+            <a href="#" className="text-[#DC0155] hover:underline">Privacy Policy</a>
+          </p>
         </div>
       </div>
     </div>

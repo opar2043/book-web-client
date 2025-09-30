@@ -18,10 +18,10 @@ const AllBook = () => {
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "This action cannot be undone!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#2563eb",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
@@ -30,57 +30,61 @@ const AllBook = () => {
           .delete(`/books/${id}`)
           .then((res) => {
             if (res.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
+              Swal.fire("Deleted!", "Book has been deleted.", "success");
+              setBooks((prev) => prev.filter((b) => b._id !== id));
             }
           })
-          .catch((err) => {
-            Swal.fire({
-              title: "Error!",
-              text: "Something went wrong.",
-              icon: "error",
-            });
-            console.error(err);
+          .catch(() => {
+            Swal.fire("Error!", "Something went wrong.", "error");
           });
       }
     });
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gray-100">
-      <h2 className="text-3xl font-bold text-center text-blue-700 mb-8">📚 All Books</h2>
+    <div className="p-6 min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Page Title */}
+      <h2 className="text-3xl font-extrabold text-center text-blue-700 mb-10 tracking-wide">
+        📚 All Books
+      </h2>
 
-      <div className="overflow-x-auto shadow-lg rounded-xl bg-white p-4">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-blue-100">
+      {/* Table Container */}
+      <div className="overflow-x-auto shadow-2xl rounded-2xl bg-white border border-gray-200">
+        <table className="min-w-full text-sm text-left">
+          <thead className="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
             <tr>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">#</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Title</th>
-              <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Author</th>
-              <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">Action</th>
+              <th className="px-6 py-4 font-semibold">#</th>
+              <th className="px-6 py-4 font-semibold">Title</th>
+              <th className="px-6 py-4 font-semibold">Author</th>
+              <th className="px-6 py-4 text-center font-semibold">Action</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+
+          <tbody className="divide-y divide-gray-100">
             {books.length > 0 ? (
               books.map((book, idx) => (
-                <tr key={book._id} className="hover:bg-blue-50 transition">
-                  <td className="px-4 py-3 text-sm text-gray-600">{idx + 1}</td>
-                  <td className="px-4 py-3 text-sm font-medium text-gray-800">{book.title}</td>
-                  <td className="px-4 py-3 text-sm text-gray-700">{book.author}</td>
-                  <td className="px-4 py-3 text-center">
-                    <div className="flex justify-center gap-4">
+                <tr
+                  key={book._id}
+                  className="hover:bg-blue-50 transition-colors duration-200"
+                >
+                  <td className="px-6 py-4 text-gray-600 font-medium">
+                    {idx + 1}
+                  </td>
+                  <td className="px-6 py-4 text-gray-900 font-semibold">
+                    {book.title}
+                  </td>
+                  <td className="px-6 py-4 text-gray-700">{book.author}</td>
+                  <td className="px-6 py-4">
+                    <div className="flex justify-center gap-5">
                       <button
                         title="Edit"
-                        className="text-blue-600 hover:text-blue-800 transition"
+                        className="flex items-center justify-center w-9 h-9 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300"
                       >
                         <FaEdit />
                       </button>
                       <button
                         title="Delete"
-                        className="text-red-600 hover:text-red-800 transition"
+                        className="flex items-center justify-center w-9 h-9 rounded-full bg-red-100 text-red-600 hover:bg-red-600 hover:text-white transition duration-300"
                         onClick={() => handleDelete(book._id)}
                       >
                         <FaTrash />
@@ -91,7 +95,10 @@ const AllBook = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="text-center py-4 text-gray-500">
+                <td
+                  colSpan="4"
+                  className="text-center py-6 text-gray-500 italic"
+                >
                   No books available.
                 </td>
               </tr>
